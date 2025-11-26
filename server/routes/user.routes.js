@@ -1,7 +1,24 @@
+// import { Router } from "express";
+// import { registerUser } from "../controllers/userController.js";
+
+// const UserRouter = Router();
+
+// UserRouter.route("/register").post(registerUser)
+// export default UserRouter;
+
+
 import { Router } from "express";
-import { registerUser } from "../controllers/userController.js";
+import { loginUser, logoutUser, registerUser } from "../controllers/userController.js";
+import { verifyJWT } from "../middleware/auth.js";
 
-const router = Router();
+const userRouter = Router();
 
-router.route("/register").post(registerUser)
-export default router;
+// PUBLIC ROUTES
+userRouter.route("/register").post(registerUser);
+userRouter.route("/login").post(loginUser)
+
+//SECURED ROUTES
+userRouter.route("/logout").post(verifyJWT, logoutUser)
+
+// (OTHER ROUTES BELOW)
+export default userRouter;

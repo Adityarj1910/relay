@@ -1,71 +1,31 @@
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import { ApiError } from "../utils/ApiError.js";
+// import { asyncHandler } from "../utils/asyncHandler.js";
+import asyncHandler from "express-async-handler";
+import jwt from "jsonwebtoken"
+import { User } from "../models/User.js";
 
-/**
- * Authentication Middleware
- * Verifies JWT token and attaches user to request object
- */
-const auth = async (req, res, next) => {
+export const verifyJWT = asyncHandler(async (req, _, next) => {
     try {
-        // Get token from Authorization header
-        const authHeader = req.header('Authorization');
+        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
 
-        if (!authHeader) {
-            return res.status(401).json({
-                success: false,
-                message: 'Access denied. No token provided.'
-            });
-        }
-
-        // Extract token (format: "Bearer <token>")
-        const token = authHeader.replace('Bearer ', '');
-
+        // console.log(token);
         if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: 'Access denied. Invalid token format.'
-            });
+            throw new ApiError(401, "Unauthorized request")
         }
 
-        // Verify token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
-        // Find user by ID from token payload
-        const user = await User.findById(decoded.userId).select('-password');
+        const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
 
         if (!user) {
-            return res.status(401).json({
-                success: false,
-                message: 'User not found. Token is invalid.'
-            });
+
+            throw new ApiError(401, "Invalid Access Token")
         }
 
-        // Attach user to request object
         req.user = user;
-        req.userId = user._id;
-
-        next();
+        next()
     } catch (error) {
-        if (error.name === 'JsonWebTokenError') {
-            return res.status(401).json({
-                success: false,
-                message: 'Invalid token.'
-            });
-        }
-
-        if (error.name === 'TokenExpiredError') {
-            return res.status(401).json({
-                success: false,
-                message: 'Token has expired. Please login again.'
-            });
-        }
-
-        return res.status(500).json({
-            success: false,
-            message: 'Authentication error.',
-            error: error.message
-        });
+        throw new ApiError(401, error?.message || "Invalid access token")
     }
-};
 
-export default auth;
+})

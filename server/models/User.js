@@ -27,7 +27,7 @@ const userSchema = new Schema(
             trim: true,
             lowercase: true,
             unique: true,
-            sparse: true
+            required: [true, "Email is required"],
         },
         password: {
             type: String,
@@ -35,6 +35,9 @@ const userSchema = new Schema(
             // trim: true,
             minlength: [6, "Password must be at least 6 characters long"],
         },
+        refreshToken: {
+            type: String
+        }
     },
     { timestamps: true }
 );

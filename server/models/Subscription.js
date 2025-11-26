@@ -32,7 +32,7 @@ const subscriptionSchema = new Schema(
 
         billingCycle: {
             type: String,
-            enum: ["monthly", "quarterly", "yearly"],
+            enum: ["monthly", "quarterly", "yearly", "weekly"],
             required: true,
         },
 
