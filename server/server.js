@@ -8,6 +8,8 @@ dotenv.config();
 
 const app = express();
 
+
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -26,5 +28,13 @@ app.get("/", (req, res) => {
 import userRouter from "./routes/user.routes.js";
 app.use("/api/v1/users", userRouter); // Fixed: added leading slash
 
-const PORT = process.env.PORT || 5000;
+
+app.use((err, req, res, next) => {
+    res.status(err.statusCode || 500).json({
+        success: false,
+        message: err.message || "Server error"
+    });
+});
+
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

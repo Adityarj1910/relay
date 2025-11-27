@@ -29,3 +29,34 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
     }
 
 })
+
+
+// import asyncHandler from "express-async-handler";
+// import jwt from "jsonwebtoken";
+// import { User } from "../models/User.js";
+// import { ApiError } from "../utils/ApiError.js";
+
+// export const verifyJWT = asyncHandler(async (req, res, next) => {
+//     const token = req.cookies?.accessToken ||
+//         req.header("Authorization")?.replace("Bearer ", "");
+
+//     if (!token) {
+//         return next(new ApiError(401, "Unauthorized request"));
+//     }
+
+//     let decoded;
+//     try {
+//         decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+//     } catch (err) {
+//         return next(new ApiError(401, "Invalid access token"));
+//     }
+
+//     const user = await User.findById(decoded?._id).select("-password -refreshToken");
+
+//     if (!user) {
+//         return next(new ApiError(401, "User not found or token invalid"));
+//     }
+
+//     req.user = user;
+//     next();
+// });
