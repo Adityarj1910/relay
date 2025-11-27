@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+// var jwt = require('jsonwebtoken')
 
 const userSchema = new Schema(
     {
@@ -62,8 +63,11 @@ userSchema.methods.generateAccessToken = function () { // Generate token
             email: this.email,
         },
         process.env.ACCESS_TOKEN_SECRET,
+        // 'aa',
         {
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+            // expiresIn: 24 * 60 * 60
+            // algorithm: 'HS256'
         }
     );
 };
@@ -74,8 +78,11 @@ userSchema.methods.generateRefreshToken = function () { // Generate refresh toke
             _id: this._id,
         },
         process.env.REFRESH_TOKEN_SECRET,
+        // 'aa',
         {
-            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+            // expiresIn: 24 * 60 * 60 * 2
+            // algorithm: 'HS256'
         }
     );
 };

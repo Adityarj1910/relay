@@ -25,7 +25,7 @@ const generateAccessTokenAndRefreshTokens = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
 
-    const { name, username, phoneNumber, email, password } = req.body;
+    const { name, username, phoneNumber, email, password, } = req.body;
     if (
         [name, phoneNumber, email, username, password].some((field) => field?.trim() === "")
     ) {
@@ -80,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const { phoneNumber, username, password } = req.body;
 
-    if (!phoneNumber || !username) {
+    if (!phoneNumber && !username) {
         throw new ApiError(400, "Phone Number or Username is required")
     }
 
@@ -93,7 +93,7 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new ApiError(404, "User Does not Exist. Please Login")
     }
 
-    const isPasswordValid = await user.isPasswordCorrect(password)
+    const isPasswordValid = await user.comparePassword(password)
     if (!isPasswordValid) {
         throw new ApiError(403, "Invalid User Credentials")
     }
@@ -155,8 +155,18 @@ const logoutUser = asyncHandler(async (req, res) => {
         )
 })
 
+const getProfile = asyncHandler(async (req, res) => {
+    // const currUser = await User.findById(req.user._id) 
+    //since the auth middleware already has user, so no need to do the DB call
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, req.user, "User Profile Fetched Successfully"))
+})
+
 export {
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    getProfile
 }
