@@ -37,6 +37,7 @@ const subscriptionSchema = new Schema(
         },
 
         notes: { type: String },
+        
         // auto-calculated — NOT provided by user
         nextBillingDate: {
             type: Date,

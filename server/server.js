@@ -26,7 +26,10 @@ app.get("/", (req, res) => {
 
 // ROUTES
 import userRouter from "./routes/user.routes.js";
+import subscriptionRouter from "./routes/subscription.routes.js";
 app.use("/api/v1/users", userRouter); // Fixed: added leading slash
+app.use("/api/v1/subscriptions", subscriptionRouter);
+
 
 
 app.use((err, req, res, next) => {
