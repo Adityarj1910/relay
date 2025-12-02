@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public Routes */}
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
@@ -36,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/subscriptions/edit/:id"
+          path="/subscriptions/update/:id"
           element={
             <ProtectedRoute>
               <EditSubscription />

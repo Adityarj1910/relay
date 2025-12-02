@@ -1,0 +1,56 @@
+/* Home Page Styles */
+.home-container {
+    padding: 2rem;
+    text-align: center;
+    margin: 20rem 0;
+    background-color: 010100;
+}
+
+h1 {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.home-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+
+}
+
+.home-title-name {
+    font-size: 3.5xrem;
+    margin-bottom: 1rem;
+    padding: 0.45rem 1rem;
+    text-align: center;
+    background-color: #333f4c;
+    border-radius: 10px;
+}
+
+.home-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.home-content {
+    margin-top: 2rem;
+}
+
+
+.home-welcome-message {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.home-buttons a {
+    text-decoration: none;
+}

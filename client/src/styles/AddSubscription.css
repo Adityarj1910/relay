@@ -1,0 +1,62 @@
+/* AddSubscription Page Styles */
+
+.add-subscription-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-subscription-title {
+    margin-bottom: 1.5rem;
+}
+
+.add-subscription-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field {
+    margin-bottom: 1.5rem;
+    /* max-width: 100%; */
+    /* max-width: 00px; */
+
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-required {
+    color: #dc3545;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 0px solid #242424;
+    font-size: 1rem;
+    /* background-color: rgb(44, 39, 52); */
+    background: #0a0b0b;
+
+}
+
+.form-textarea {
+    width: 95%;
+    padding: 0.75rem;
+    border: 0px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    /* background-color: rgb(44, 39, 52); */
+    background: #0a0b0b;
+
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}

@@ -52,19 +52,29 @@ export const AuthProvider = ({ children }) => {
 
     // Logout function - calls backend to clear refresh token and cookies
     const logout = async () => {
+        // Store token before clearing
+        const currentToken = token;
+
+        // Clear local state FIRST to prevent any 401 redirects
+        setUser(null);
+        setToken(null);
+        localStorage.removeItem("token");
+
+        // Then try to call backend to clear refresh token (best effort)
         try {
-            // Call backend logout endpoint to clear refresh token from DB and cookies
-            if (token) {
-                await api.post("/users/logout");
+            if (currentToken) {
+                // Use fetch instead of api to avoid interceptor redirect
+                await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5001/api/v1"}/users/logout`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${currentToken}`,
+                    },
+                });
             }
         } catch (error) {
-            console.error("Logout error:", error);
-            // Continue with local logout even if backend call fails
-        } finally {
-            // Clear local state regardless of backend response
-            setUser(null);
-            setToken(null);
-            localStorage.removeItem("token");
+            console.error("Logout backend call error:", error);
+            // Ignore errors - local logout already complete
         }
     };
 

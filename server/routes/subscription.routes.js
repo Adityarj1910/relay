@@ -3,6 +3,7 @@ import {
     getAllSubscription,
     createSubscription,
     getSubscriptionByName,
+    getSubscriptionById,
     updateSubscription,
     deleteSubscription
 } from "../controllers/subscriptionController.js";
@@ -13,6 +14,7 @@ const subscriptionRouter = Router();
 subscriptionRouter.route("/").get(verifyJWT, getAllSubscription);
 subscriptionRouter.route("/create").post(verifyJWT, createSubscription)
 subscriptionRouter.route("/getSubscriptionByName").get(verifyJWT, getSubscriptionByName)
+subscriptionRouter.route("/getSubscriptionById/:id").get(verifyJWT, getSubscriptionById)
 subscriptionRouter.route("/update/:id").put(verifyJWT, updateSubscription)
 subscriptionRouter.route("/delete/:id").delete(verifyJWT, deleteSubscription)
 

@@ -138,6 +138,28 @@ const getSubscriptionByName = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, subscriptionDetais, "Subscription Fetched Successfully"))
 })
 
+const getSubscriptionById = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
+    const { id } = req.params;
+
+    // Find subscription by ID
+    const subscription = await Subscription.findById(id);
+
+    // Check if subscription exists
+    if (!subscription) {
+        throw new ApiError(404, "Subscription not found");
+    }
+
+    // Check if subscription belongs to the authenticated user
+    if (subscription.userId.toString() !== userId.toString()) {
+        throw new ApiError(403, "You are not authorized to access this subscription");
+    }
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, subscription, "Subscription Fetched Successfully"));
+});
+
 const updateSubscription = asyncHandler(async (req, res) => {
     const userId = req.user._id
     const { id } = req.params
@@ -228,6 +250,7 @@ export {
     createSubscription,
     getAllSubscription,
     getSubscriptionByName,
+    getSubscriptionById,
     updateSubscription,
     deleteSubscription
 }

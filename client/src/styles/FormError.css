@@ -1,0 +1,47 @@
+/* FormError Component Styles */
+
+.form-message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-message-icon {
+    font-size: 1.25rem;
+}
+
+.form-message-text {
+    flex: 1;
+}
+
+/* Error Type */
+.form-message-error {
+    background-color: #fee;
+    color: #c33;
+    border-color: #fcc;
+}
+
+/* Success Type */
+.form-message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Warning Type */
+.form-message-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+/* Info Type */
+.form-message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}

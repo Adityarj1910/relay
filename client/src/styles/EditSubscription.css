@@ -1,0 +1,59 @@
+/* EditSubscription Page Styles */
+
+.edit-subscription-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.edit-subscription-title {
+    margin-bottom: 1.5rem;
+}
+
+.edit-subscription-loading {
+    padding: 2rem;
+    text-align: center;
+}
+
+.edit-subscription-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reusing form styles from AddSubscription */
+.edit-form-field {
+    margin-bottom: 1.5rem;
+}
+
+.edit-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.edit-form-required {
+    color: #dc3545;
+}
+
+.edit-form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.edit-form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.edit-form-actions {
+    display: flex;
+    gap: 1rem;
+}
