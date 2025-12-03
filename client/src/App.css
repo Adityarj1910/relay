@@ -1,7 +1,11 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
   align-items: center;
   /* align-items: center */
@@ -9,7 +13,10 @@
   /* align-items: center; */
   /* Vertically centers items */
   justify-content: center;
-  background-color: #010100;
+  /* background-color: #010100; */
+  /* background-image: url("../public/gradient-grainy-texture/5479108.jpg");
+  background-size: cover;
+  background-position: center; */
 }
 
 .logo {

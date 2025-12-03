@@ -119,8 +119,8 @@ function Login() {
                         name="identifier"
                         value={formData.identifier}
                         onChange={handleChange}
-                        label="Username or Phone Number"
-                        placeholder="Enter username or 10-digit phone number"
+                        label="Username or Phone"
+                        placeholder="Jhon Doe"
                         autoComplete="username"
                         error={errors.identifier}
                         required
@@ -137,7 +137,7 @@ function Login() {
                                 value={formData.password}
                                 onChange={handleChange}
                                 className={`password-input ${errors.password ? "error" : ""}`}
-                                placeholder="Enter your password"
+                                placeholder="******"
                                 autoComplete="current-password"
                             />
                             <button
@@ -153,7 +153,7 @@ function Login() {
                         )}
                     </div>
 
-                    <Button type="submit" loading={loading} fullWidth>
+                    <Button variant="outline" type="submit" loading={loading} fullWidth>
                         Login
                     </Button>
 

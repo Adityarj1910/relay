@@ -17,6 +17,7 @@ function EditSubscription() {
         category: "",
         description: "",
     });
+    const [originalData, setOriginalData] = useState({});
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState("");
@@ -31,14 +32,19 @@ function EditSubscription() {
                     ? new Date(subscription.nextBillingDate).toISOString().split("T")[0]
                     : "";
 
-                setFormData({
-                    name: subscription.name || "",
-                    price: subscription.price || "",
+                // Store original data for placeholders
+                const original = {
+                    name: subscription.serviceName || "",
+                    price: subscription.amount || "",
                     billingCycle: subscription.billingCycle || "monthly",
                     nextBillingDate: formattedDate,
                     category: subscription.category || "",
-                    description: subscription.description || "",
-                });
+                    description: subscription.notes || "",
+                };
+
+                setOriginalData(original);
+                // Set formData with original values so fields are pre-filled
+                setFormData(original);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -77,82 +83,89 @@ function EditSubscription() {
 
     return (
         <div className="edit-subscription-container">
-            <h1 className="edit-subscription-title">Edit Subscription</h1>
+            <div className="edit-subscription-card">
+                <h1 className="edit-subscription-title">Edit Subscription</h1>
 
-            <FormError message={error} type="error" />
+                <FormError message={error} type="error" />
 
-            <form onSubmit={handleSubmit} className="edit-subscription-form">
-                <Input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    label="Name"
-                    required
-                />
-
-                <Input
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    label="Price"
-                    required
-                />
-
-                <div className="edit-form-field">
-                    <label className="edit-form-label">
-                        Billing Cycle <span className="edit-form-required">*</span>
-                    </label>
-                    <select
-                        name="billingCycle"
-                        value={formData.billingCycle}
+                <form onSubmit={handleSubmit} className="edit-subscription-form">
+                    <Input
+                        type="text"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        className="edit-form-select"
-                    >
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
-                        <option value="weekly">Weekly</option>
-                    </select>
-                </div>
-
-                <Input
-                    type="date"
-                    name="nextBillingDate"
-                    value={formData.nextBillingDate}
-                    onChange={handleChange}
-                    label="Next Billing Date"
-                    required
-                />
-
-                <Input
-                    type="text"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    label="Category"
-                />
-
-                <div className="edit-form-field">
-                    <label className="edit-form-label">Description</label>
-                    <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleChange}
-                        rows="3"
-                        className="edit-form-textarea"
+                        label="Service Name"
+                        placeholder={originalData.name || "Enter service name"}
+                        required
                     />
-                </div>
 
-                <div className="edit-form-actions">
-                    <Button type="submit" loading={saving}>
-                        Save Changes
-                    </Button>
-                    <Button type="button" variant="secondary" onClick={() => navigate("/dashboard")}>
-                        Cancel
-                    </Button>
-                </div>
-            </form>
+                    <Input
+                        type="number"
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        label="Price"
+                        placeholder={originalData.price || "Enter price"}
+                        required
+                    />
+
+                    <div className="edit-form-field">
+                        <label className="edit-form-label">
+                            Billing Cycle <span className="edit-form-required">*</span>
+                        </label>
+                        <select
+                            name="billingCycle"
+                            value={formData.billingCycle}
+                            onChange={handleChange}
+                            className="edit-form-select"
+                        >
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                    </div>
+
+                    <Input
+                        type="date"
+                        name="nextBillingDate"
+                        value={formData.nextBillingDate}
+                        onChange={handleChange}
+                        label="Next Billing Date"
+                        placeholder={originalData.nextBillingDate || "Select date"}
+                        required
+                    />
+
+                    <Input
+                        type="text"
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        label="Category"
+                        placeholder={originalData.category || "Enter category"}
+                    />
+
+                    <div className="edit-form-field">
+                        <label className="edit-form-label">Description</label>
+                        <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            rows="3"
+                            className="edit-form-textarea"
+                            placeholder={originalData.description || "Enter description"}
+                        />
+                    </div>
+
+                    <div className="edit-form-actions">
+                        <Button type="submit" variant="primary" loading={saving}>
+                            Save Changes
+                        </Button>
+                        <Button type="button" variant="outline" onClick={() => navigate("/dashboard")}>
+                            Cancel
+                        </Button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

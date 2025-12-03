@@ -1,9 +1,23 @@
 /* Home Page Styles */
 .home-container {
-    padding: 2rem;
     text-align: center;
-    margin: 20rem 0;
-    background-color: 010100;
+    background: transparent;
+    margin-top: -5rem;
+}
+
+.background {
+
+    background: transparent;
+    /* background-image: url("../public/gradient-grainy-texture/5479108.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 h1 {

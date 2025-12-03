@@ -45,58 +45,59 @@ function AddSubscription() {
 
     return (
         <div className="add-subscription-container">
-            <h1 className="add-subscription-title">Add New Subscription</h1>
+            <div className="add-subscription-card">
+                <h1 className="add-subscription-title">Add Subscription</h1>
 
-            <FormError message={error} type="error" />
+                <FormError message={error} type="error" />
 
-            <form onSubmit={handleSubmit} className="add-subscription-form">
-                <Input
-                    type="text"
-                    name="serviceName"
-                    value={formData.serviceName}
-                    onChange={handleChange}
-                    label="Service Name"
-                    placeholder="Netflix lets say"
-                    required
-                />
-
-                <Input
-                    type="number"
-                    name="amount"
-                    value={formData.amount}
-                    onChange={handleChange}
-                    label="Amount"
-                    placeholder="499"
-                    required
-                />
-
-                <div className="form-field">
-                    <label className="form-label">
-                        Billing Cycle <span className="form-required">*</span>
-                    </label>
-                    <select
-                        name="billingCycle"
-                        value={formData.billingCycle}
+                <form onSubmit={handleSubmit} className="add-subscription-form">
+                    <Input
+                        type="text"
+                        name="serviceName"
+                        value={formData.serviceName}
                         onChange={handleChange}
-                        className="form-select"
-                    >
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
-                </div>
+                        label="Service Name"
+                        placeholder="Netflix lets say"
+                        required
+                    />
 
-                <Input
-                    type="date"
-                    name="startDate"
-                    value={formData.startDate}
-                    onChange={handleChange}
-                    label="Start Date"
-                    placeholder="19/10/2025"
-                    required
-                />
-                {/* 
+                    <Input
+                        type="number"
+                        name="amount"
+                        value={formData.amount}
+                        onChange={handleChange}
+                        label="Amount"
+                        placeholder="499"
+                        required
+                    />
+
+                    <div className="form-field">
+                        <label className="form-label">
+                            Billing Cycle <span className="form-required">*</span>
+                        </label>
+                        <select
+                            name="billingCycle"
+                            value={formData.billingCycle}
+                            onChange={handleChange}
+                            className="form-select"
+                        >
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+
+                    <Input
+                        type="date"
+                        name="startDate"
+                        value={formData.startDate}
+                        onChange={handleChange}
+                        label="Start Date"
+                        placeholder="19/10/2025"
+                        required
+                    />
+                    {/* 
                 <Input
                     type="text"
                     name="category"
@@ -105,45 +106,46 @@ function AddSubscription() {
                     label="Category"
                 /> */}
 
-                <div className="form-field">
-                    <label className="form-label">
-                        Category <span className="form-required">*</span>
-                    </label>
-                    <select
-                        name="category"
-                        value={formData.category}
-                        onChange={handleChange}
-                        className="form-select"
-                    >
-                        <option value="entertainment">Entertainment</option>
-                        <option value="education">Education</option>
-                        <option value="utilities">Utilities</option>
-                        <option value="software">Software</option>
-                        <option value="health">Health</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+                    <div className="form-field">
+                        <label className="form-label">
+                            Category <span className="form-required">*</span>
+                        </label>
+                        <select
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                            className="form-select"
+                        >
+                            <option value="entertainment">Entertainment</option>
+                            <option value="education">Education</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="software">Software</option>
+                            <option value="health">Health</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-                <div className="form-field">
-                    <label className="form-label">Description</label>
-                    <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleChange}
-                        rows="3"
-                        className="form-textarea"
-                    />
-                </div>
+                    <div className="form-field">
+                        <label className="form-label">Description</label>
+                        <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            rows="3"
+                            className="form-textarea"
+                        />
+                    </div>
 
-                <div className="form-actions">
-                    <Button type="submit" loading={loading}>
-                        Add Subscription
-                    </Button>
-                    <Button type="button" variant="secondary" onClick={() => navigate("/dashboard")}>
-                        Cancel
-                    </Button>
-                </div>
-            </form>
+                    <div className="form-actions">
+                        <Button variant="primary" type="submit" loading={loading}>
+                            Add Subscription
+                        </Button>
+                        <Button variant="outline" type="button" onClick={() => navigate("/dashboard")}>
+                            Cancel
+                        </Button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

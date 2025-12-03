@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://localhost:5173/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+  <script type="module" src="./client_files/client"></script>
+
+  
+  <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>client</title>
+<style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/index.css">*{
+  box-sizing:border-box;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #a6b6ca; */
+  /* background-color: #0a0b0b; */
+
+  font-synthesis: none;
+  /* text-rendering: optimizeLegibility; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("/gradient-grainy-texture/5479108.jpg");
+  background-size:cover;
+  background-position: top;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  /* margin: 20rem; */
+  align-items: center;
+  place-items: center;
+  min-width: 320px;
+  /* background-color: #010100; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* color: #213547; */
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Button.css">/* Button Component Styles */
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn.full-width {
+    width: 100%;
+}
+
+/* Primary Variant */
+.btn-primary {
+    /* margin-top: 2rem;     */
+    background-color: #252c3b;
+    /* color: white; */
+    /* background: #323D4D;
+    background: radial-gradient(180deg, rgba(50, 61, 77, 1) 0%, rgba(48, 59, 74, 1) 50%, rgba(35, 45, 59, 1) 100%); */
+    background: "linear-gradient(to bottom, #374151, #1f2937)";
+    box-shadow : "inset 0 -1px #10171e, inset 0 0 0 1px hsla(205,89%,46%,.24), 0 2px 4px #00000052";
+    border: 0.5px solid white;
+    border-radius: 10px;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: white;
+    color: #252c3b;
+    border: 1px solid #252c3b;
+}
+
+.btn-primary:disabled {
+    background-color: #ccc;
+    color: #666;
+}
+
+/* Secondary Variant */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: #545b62;
+}
+
+/* Danger Variant */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+/* Success Variant */
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+/* Outline Variant */
+.btn-outline {
+    background-color: transparent;
+    color: #252c3b;
+    background-color: rgb(229, 228, 228);
+    border: 1px solid black;
+    border-radius: 10px;
+    /* margin-left: 1rem; */
+}
+
+.btn-outline:hover:not(:disabled) {
+    background-color: #252c3b;
+    color: white;
+    border: 0.5px solid white;
+}
+
+/* Loading Spinner */
+.btn-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Home.css">/* Home Page Styles */
+.home-container {
+    text-align: center;
+    background: transparent;
+    margin-top: -5rem;
+}
+
+.background {
+
+    background: transparent;
+    /* background-image: url("../public/gradient-grainy-texture/5479108.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+h1 {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.home-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+
+}
+
+.home-title-name {
+    font-size: 3.5xrem;
+    margin-bottom: 1rem;
+    padding: 0.45rem 1rem;
+    text-align: center;
+    background-color: #333f4c;
+    border-radius: 10px;
+}
+
+.home-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.home-content {
+    margin-top: 2rem;
+}
+
+
+.home-welcome-message {
+    /* font-size: 1.125rem; */
+    margin-bottom: 1.5rem;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.home-buttons a {
+    text-decoration: none;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Input.css">/* Input Component Styles */
+
+.input-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.input-label {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    /* color: #333; */
+    color: white;
+}
+
+.input-required {
+    color: #dc3545;
+    margin-left: 0.25rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #242424;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    /* background-color: white; */
+    background: #0a0b0b;
+    cursor: text;
+    color: white;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
+}
+
+.form-field {
+    /* max-width: 100%; */
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #242424;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    /* background-color: white; */
+    cursor: text;
+    color: white;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+}
+
+.input-field.error {
+    border-color: #dc3545;
+}
+
+.input-field:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.input-error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/FormError.css">/* FormError Component Styles */
+
+.form-message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-message-icon {
+    font-size: 1.25rem;
+}
+
+.form-message-text {
+    flex: 1;
+}
+
+/* Error Type */
+.form-message-error {
+    background-color: #fee;
+    color: #c33;
+    border-color: #fcc;
+}
+
+/* Success Type */
+.form-message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Warning Type */
+.form-message-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+/* Info Type */
+.form-message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Login.css">/* Login Page Styles */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 10rem; */
+}
+
+.login-card {
+    /* background-color: white; */
+    border-radius: 8px;
+    /* padding: 4rem;
+    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.1); */
+    padding: 2rem 4rem;
+    box-shadow: 15px 15px 20px 30px rgba(11, 11, 11, 0.405);
+    width: 100%;
+    /* max-width: 450px; */
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: white;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Password Field with Toggle */
+.password-field-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.password-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-input {
+    width: 100%;
+    padding: 0.75rem;
+    /* padding-right: 3rem; */
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 0px;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
+    /* background-color: transparent; */
+    background-color: #0a0b0a;
+}
+
+.password-input.error {
+    border-color: #dc3545;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: none; */
+    /* background-color: #0a0b0a; */
+    background-color: transparent;
+    border: 0px solid white;
+    cursor: pointer;
+    color: white;
+    font-size: 0.875rem;
+}
+
+.password-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Footer Link */
+.login-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: #e4e1e1;
+}
+
+.login-footer a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Register.css">/* Register Page Styles */
+
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 2rem; */
+    /* background-color: #f5f5f5; */
+}
+
+.register-card {
+    /* background-color: white; */
+    border-radius: 8px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    padding: 2rem 4rem;
+    box-shadow: 15px 15px 20px 30px rgba(11, 11, 11, 0.405);
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 0;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Password Fields with Toggle */
+.register-password-field {
+    margin-bottom: 1.5rem;
+}
+
+.register-password-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.register-password-container {
+    position: relative;
+}
+
+.register-password-input {
+    /* width: 100%;
+    padding: 0.75rem;
+    padding-right: 3rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem; */
+    width: 93%;
+    padding: 0.75rem;
+    /* padding-right: 3rem; */
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 0px;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
+    /* background-color: transparent; */
+    background-color: #0a0b0a;
+}
+
+.register-password-input.error {
+    border-color: #dc3545;
+}
+
+.register-password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 0px solid white;
+    cursor: pointer;
+    color: white;
+    font-size: 0.875rem;
+}
+
+.register-password-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Footer Link */
+.register-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.register-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+.register-optional {
+    color: #888;
+    font-size: 0.875rem;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/ToggleSwitch.css">.toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-switch-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.toggle-switch-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    min-width: 60px;
+    text-align: left;
+}
+
+.toggle-switch-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background-color: #cbd5e1;
+    border-radius: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-switch-slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch-input:checked+.toggle-switch-slider {
+    background-color: #10b981;
+}
+
+.toggle-switch-input:checked+.toggle-switch-slider::before {
+    transform: translateX(20px);
+}
+
+.toggle-switch-input:focus+.toggle-switch-slider {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.toggle-switch-disabled .toggle-switch-slider {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+.toggle-switch:hover:not(.toggle-switch-disabled) .toggle-switch-slider {
+    background-color: #94a3b8;
+}
+
+.toggle-switch:hover:not(.toggle-switch-disabled) .toggle-switch-input:checked+.toggle-switch-slider {
+    background-color: #059669;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/Dashboard.css">/* Dashboard Page Styles */
+
+.dashboard-container::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboard-container {
+    padding: 2rem;
+    /* max-width: 2400px; */
+    margin: 0 auto;
+    width: 55vw;
+    height: 100vh;
+    overflow: scroll;
+    /* height: 100%;    */
+}
+
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+.dashboard-header-content {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 3rem;
+    padding: 0;
+}
+
+.dashboard-welcome {
+    color: #f6eded;
+    margin: 0.2rem 0 0 0;
+    font-size: 1.5rem;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.stat-card {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    border: 1px solid;
+    /* width: 80%; */
+}
+
+.stat-card-label {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0rem;
+}
+
+.stat-card-value {
+    margin: 0rem 0 0 0;
+    font-size: 2rem;
+}
+
+.stat-card-blue {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+}
+
+.stat-card-blue .stat-card-label {
+    color: #1976d2;
+}
+
+.stat-card-blue .stat-card-value {
+    color: #0d47a1;
+}
+
+.stat-card-purple {
+    background-color: #f3e5f5;
+    border-color: #ce93d8;
+}
+
+.stat-card-purple .stat-card-label {
+    color: #7b1fa2;
+}
+
+.stat-card-purple .stat-card-value {
+    color: #4a148c;
+}
+
+.stat-card-orange {
+    background-color: #fff3e0;
+    border-color: #ffb74d;
+}
+
+.stat-card-orange .stat-card-label {
+    color: #f57c00;
+}
+
+.stat-card-orange .stat-card-value {
+    color: #e65100;
+}
+
+/* Add Button Section */
+.dashboard-add-section {
+    margin-bottom: 2rem;
+}
+
+/* Error Display */
+.dashboard-error {
+    color: red;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fee;
+    border-radius: 4px;
+}
+
+/* Subscriptions List */
+.subscriptions-section h2 {
+    margin-bottom: 1rem;
+}
+
+.subscriptions-empty {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.subscriptions-empty p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.subscriptions-list {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.subscription-card {
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subscription-card.upcoming {
+    /* border: 2px solid #ff0000; */
+    background-color: rgba(248, 146, 146, 0.8);
+    backdrop-filter: blur(90px);
+    -webkit-backdrop-filter: blur(90px);
+}
+
+.subscription-content {
+    flex: 1;
+}
+
+.subscription-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #666;
+}
+
+.subscription-meta {
+    display: flex;
+    gap: 2rem;
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.subscription-status {
+    display: flex;
+    align-items: center;
+}
+
+.subscription-upcoming-badge {
+    color: #ff9800;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.subscription-description {
+    margin: 0.5rem 0 0 0;
+    color: #888;
+    font-size: 0.875rem;
+}
+
+.subscription-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Loading State */
+.dashboard-loading {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+}
+
+.pagination-button {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: #374151;
+    color: white;
+    transform: scale(1.05);
+}
+
+.pagination-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    font-weight: 500;
+    color: #f6eded;
+    min-width: 120px;
+    text-align: center;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/AddSubscription.css">/* AddSubscription Page Styles */
+
+.add-subscription-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-subscription-title {
+    margin-bottom: 1.5rem;
+}
+
+.add-subscription-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field {
+    margin-bottom: 1.5rem;
+    /* max-width: 100%; */
+    /* max-width: 00px; */
+
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-required {
+    color: #dc3545;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 0px solid #242424;
+    font-size: 1rem;
+    /* background-color: rgb(44, 39, 52); */
+    background: #0a0b0b;
+
+}
+
+.form-textarea {
+    width: 95%;
+    padding: 0.75rem;
+    border: 0px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    /* background-color: rgb(44, 39, 52); */
+    background: #0a0b0b;
+
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}</style><style type="text/css" data-vite-dev-id="/Users/adityaraj/Documents/MyDocs/CodeBase/relay/client/src/styles/EditSubscription.css">/* EditSubscription Page Styles */
+
+.edit-subscription-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.edit-subscription-title {
+    margin-bottom: 1.5rem;
+}
+
+.edit-subscription-loading {
+    padding: 2rem;
+    text-align: center;
+}
+
+.edit-subscription-form {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+/* Reusing form styles from AddSubscription */
+.edit-form-field {
+    margin-bottom: 1.5rem;
+}
+
+.edit-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.edit-form-required {
+    color: #dc3545;
+}
+
+.edit-form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.edit-form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.edit-form-actions {
+    display: flex;
+    gap: 1rem;
+}</style></head>
+
+<body>
+  <div id="root"><div class="login-container"><div class="login-card"><h1 class="login-title">Welcome Back</h1><form class="login-form"><div class="input-wrapper"><label for="identifier" class="input-label">Username or Phone<span class="input-required">*</span></label><input id="identifier" placeholder="Jhon Doe" autocomplete="username" required="" class="input-field " type="text" value="" name="identifier"></div><div class="password-field-wrapper"><label class="password-label">Password <span style="color: red;">*</span></label><div class="password-input-container"><input class="password-input " placeholder="******" autocomplete="current-password" type="password" value="" name="password"><button type="button" class="password-toggle">Show</button></div></div><button type="submit" class="btn btn-outline full-width">Login</button><div class="login-footer">Don't have an account? <a href="http://localhost:5173/register" data-discover="true">Register here</a></div></form></div></div></div>
+  <script type="module" src="./client_files/main.jsx"></script>
+
+
+</body></html>

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "types": [
+            "node"
+        ],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        }
+    }
+}

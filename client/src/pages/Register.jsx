@@ -206,7 +206,7 @@ function Register() {
                         )}
                     </div>
 
-                    <Button type="submit" loading={loading} fullWidth>
+                    <Button variant="outline" type="submit" loading={loading} fullWidth>
                         Register
                     </Button>
 

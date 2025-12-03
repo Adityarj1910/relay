@@ -3,19 +3,26 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import Button from "../components/Button";
+import ToggleSwitch from "../components/ToggleSwitch";
+import editIcon from "../assets/edit.png";
+import trashIcon from "../assets/trash.png";
 import "../styles/Dashboard.css";
 
-export default function Dashboard() {
+const ITEMS_PER_PAGE = 5;
+
+function Dashboard() {
     const navigate = useNavigate();
     const { user, logout } = useAuth();
     const [subscriptions, setSubscriptions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [isActiveToggle, setIsToggled] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchSubscriptions = async () => {
             try {
-                const response = await api.get("/subscriptions");
+                const response = await api.get("/subscriptions/getSubscriptionByNextBillingDate");
                 setSubscriptions(response.data.data || []);
             } catch (err) {
                 setError(err.message);
@@ -38,7 +45,7 @@ export default function Dashboard() {
     };
 
 
-        // const handleUpdate = async (id) => {
+    // const handleUpdate = async (id) => {
     //     if (!window.confirm("Are you sure you want to Update this subscription?")) {
     //         return;
     //     }
@@ -64,6 +71,25 @@ export default function Dashboard() {
         }
     };
 
+    const handleToggleActive = async (id, currentStatus) => {
+        // Optimistic UI update
+        setSubscriptions(subscriptions.map(sub =>
+            sub._id === id ? { ...sub, isActive: !currentStatus } : sub
+        ));
+
+        try {
+            await api.put(`/subscriptions/update/${id}`, {
+                isActive: !currentStatus
+            });
+        } catch (err) {
+            // Revert on error
+            setSubscriptions(subscriptions.map(sub =>
+                sub._id === id ? { ...sub, isActive: currentStatus } : sub
+            ));
+            alert("Failed to update subscription status: " + err.message);
+        }
+    };
+
     // Calculate stats
     const totalSubscriptions = subscriptions.length;
 
@@ -78,6 +104,7 @@ export default function Dashboard() {
         return total + monthlyAmount;
     }, 0);
 
+
     const upcomingRenewals = subscriptions.filter((sub) => {
         const nextBilling = new Date(sub.nextBillingDate);
         const today = new Date();
@@ -85,6 +112,20 @@ export default function Dashboard() {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return diffDays >= 0 && diffDays <= 7;
     }).length;
+
+    // Pagination calculations
+    const totalPages = Math.ceil(subscriptions.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const currentSubscriptions = subscriptions.slice(startIndex, endIndex);
+
+    const handlePreviousPage = () => {
+        setCurrentPage((prev) => Math.max(prev - 1, 1));
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+    };
 
     if (loading) {
         return (
@@ -96,9 +137,8 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard-container">
-            {/* Header */}
             <div className="dashboard-header">
-                <div>
+                <div className="dashboard-header-content">
                     <h1>Dashboard</h1>
                     {user && <p className="dashboard-welcome">Welcome back, {user.name}!</p>}
                 </div>
@@ -106,6 +146,7 @@ export default function Dashboard() {
                     Logout
                 </Button>
             </div>
+            {/* Header */}
 
             {/* Quick Stats Cards */}
             <div className="stats-grid">
@@ -148,7 +189,7 @@ export default function Dashboard() {
                     </div>
                 ) : (
                     <div className="subscriptions-list">
-                        {subscriptions.map((sub) => {
+                        {currentSubscriptions.map((sub) => {
                             const nextBilling = new Date(sub.nextBillingDate);
                             const nextBillingDDMMYY = nextBilling.toLocaleDateString("en-GB", {
                                 day: "2-digit",
@@ -166,12 +207,23 @@ export default function Dashboard() {
                                     className={`subscription-card ${isUpcoming ? "upcoming" : ""}`}
                                 >
                                     <div className="subscription-content">
-                                        <h3>{sub.serviceName}</h3>
+                                        <h3>{sub.serviceName.toUpperCase()}</h3>
                                         <div className="subscription-meta">
                                             <span>
-                                                <strong>₹{sub.amount}</strong> / {sub.billingCycle}
+                                                <strong>₹{sub.amount}</strong> - {sub.billingCycle.toUpperCase()}
                                             </span>
-                                            {sub.category && <span> {sub.isActive ? "Active" : "Inactive"}</span>}
+                                            {sub.category && (
+                                                <span className="subscription-status">
+                                                    <ToggleSwitch
+                                                        checked={sub.isActive}
+                                                        onChange={() => handleToggleActive(sub._id, sub.isActive)}
+                                                        label={sub.isActive ? "Active" : "Inactive"}
+                                                    />
+                                                </span>
+                                            )}
+                                            <span className="subscription-category">
+                                                {sub.category.toUpperCase()}
+                                            </span>
                                             <span>
                                                 📅 Next: {nextBillingDDMMYY}
                                                 {isUpcoming && (
@@ -181,24 +233,56 @@ export default function Dashboard() {
                                                 )}
                                             </span>
                                         </div>
-                                        {sub.description && (
+                                        {/* {sub.description && (
                                             <p className="subscription-description">{sub.description}</p>
-                                        )}
+                                        )} */}
                                     </div>
                                     <div className="subscription-actions">
                                         <Link to={`/subscriptions/update/${sub._id}`}>
-                                            <Button variant="outline">Edit</Button>
+                                            <img
+                                                src={editIcon}
+                                                alt="Edit"
+                                                className="action-icon edit-icon"
+                                            />
                                         </Link>
-                                        <Button variant="danger" onClick={() => handleDelete(sub._id)}>
-                                            Delete
-                                        </Button>
+                                        <img
+                                            src={trashIcon}
+                                            alt="Delete"
+                                            className="action-icon delete-icon"
+                                            onClick={() => handleDelete(sub._id)}
+                                        />
                                     </div>
                                 </div>
                             );
                         })}
+
+                        {/* Pagination Controls */}
+                        {totalPages > 1 && (
+                            <div className="pagination-controls">
+                                <button
+                                    className="pagination-button"
+                                    onClick={handlePreviousPage}
+                                    disabled={currentPage === 1}
+                                >
+                                    &#8249;
+                                </button>
+                                <span className="pagination-info">
+                                    Page {currentPage} of {totalPages}
+                                </span>
+                                <button
+                                    className="pagination-button"
+                                    onClick={handleNextPage}
+                                    disabled={currentPage === totalPages}
+                                >
+                                    &#8250;
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
         </div>
     );
 }
+
+export default Dashboard;

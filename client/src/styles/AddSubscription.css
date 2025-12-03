@@ -1,24 +1,43 @@
 /* AddSubscription Page Styles */
 
 .add-subscription-container {
-    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-subscription-card {
+    border-radius: 8px;
+    padding: 2rem 4rem;
+    box-shadow: 15px 15px 20px 30px rgba(11, 11, 11, 0.405);
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
 }
 
 .add-subscription-title {
-    margin-bottom: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 0px;
+    font-size: 3.2rem;
+}
+
+
+.add-subscription-loading {
+    padding: 2rem;
+    text-align: center;
 }
 
 .add-subscription-form {
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .form-field {
     margin-bottom: 1.5rem;
-    /* max-width: 100%; */
-    /* max-width: 00px; */
+    border: none;
+    padding: 0px;
 
 }
 
@@ -26,6 +45,9 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: white;
+    padding: 0px
+    /* width: 100%; */
 }
 
 .form-required {
@@ -38,25 +60,31 @@
     border-radius: 10px;
     border: 0px solid #242424;
     font-size: 1rem;
-    /* background-color: rgb(44, 39, 52); */
     background: #0a0b0b;
-
+    color: white;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
 }
 
 .form-textarea {
-    width: 95%;
+    width: 100%;
     padding: 0.75rem;
     border: 0px solid #ddd;
-    border-radius: 4px;
+    border-radius: 10px;
     font-size: 1rem;
     font-family: inherit;
     resize: vertical;
-    /* background-color: rgb(44, 39, 52); */
     background: #0a0b0b;
-
+    color: white;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
 }
 
 .form-actions {
     display: flex;
     gap: 1rem;
+    margin-top: 1rem;
+    justify-content: space-between;
 }
+
+.form-actions button{
+    width:50%
+}    

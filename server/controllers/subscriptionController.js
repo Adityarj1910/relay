@@ -160,6 +160,18 @@ const getSubscriptionById = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, subscription, "Subscription Fetched Successfully"));
 });
 
+const getSubscriptionByNextBillingDate = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
+
+    // Find all subscriptions for the user and sort by nextBillingDate
+    const subscriptions = await Subscription.find({ userId })
+        .sort({ nextBillingDate: 1 });
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, subscriptions, "Subscriptions fetched successfully"));
+});
+
 const updateSubscription = asyncHandler(async (req, res) => {
     const userId = req.user._id
     const { id } = req.params
@@ -251,6 +263,7 @@ export {
     getAllSubscription,
     getSubscriptionByName,
     getSubscriptionById,
+    getSubscriptionByNextBillingDate,
     updateSubscription,
     deleteSubscription
 }

@@ -5,22 +5,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    background-color: #f5f5f5;
+    /* padding: 2rem; */
+    /* background-color: #f5f5f5; */
 }
 
 .register-card {
-    background-color: white;
-    padding: 2rem;
+    /* background-color: white; */
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    padding: 2rem 4rem;
+    box-shadow: 15px 15px 20px 30px rgba(11, 11, 11, 0.405);
     width: 100%;
-    max-width: 500px;
+    /* max-width: 500px; */
 }
 
 .register-title {
     text-align: center;
     margin-bottom: 2rem;
+    padding-top: 0;
 }
 
 .register-form {
@@ -44,12 +46,22 @@
 }
 
 .register-password-input {
-    width: 100%;
+    /* width: 100%;
     padding: 0.75rem;
     padding-right: 3rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 1rem; */
+    width: 100%;
+    padding: 0.75rem;
+    /* padding-right: 3rem; */
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
     font-size: 1rem;
+    border: 0px;
+    box-shadow: 10px 10px 16px rgba(244, 242, 242, 0.1);
+    /* background-color: transparent; */
+    background-color: #0a0b0a;
 }
 
 .register-password-input.error {
@@ -58,13 +70,13 @@
 
 .register-password-toggle {
     position: absolute;
-    right: 0.75rem;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     background: none;
-    border: none;
+    border: 0px solid white;
     cursor: pointer;
-    color: #666;
+    color: white;
     font-size: 0.875rem;
 }
 
@@ -79,11 +91,11 @@
 .register-footer {
     text-align: center;
     margin-top: 1rem;
-    color: #666;
+    color: #e4e1e1;
 }
 
 .register-footer a {
-    color: #007bff;
+    color: rgb(241, 52, 52);
     text-decoration: none;
     font-weight: 500;
 }
