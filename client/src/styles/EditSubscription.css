@@ -79,6 +79,28 @@
     justify-content: space-between;
 }
 
-.edit-form-actions button{
-    width:50%
+.edit-form-actions button {
+    width: 50%
+}
+
+/* Responsive Design */
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .edit-subscription-card {
+        padding: 1.5rem 1.5rem;
+        max-width: 95%;
+    }
+
+    .edit-subscription-title {
+        font-size: 2.5rem;
+    }
+
+    .edit-form-actions {
+        flex-direction: column;
+    }
+
+    .edit-form-actions button {
+        width: 100%;
+    }
 }

@@ -91,11 +91,56 @@
 }
 
 .login-footer a {
-    color: black;
+    color: rgb(241, 52, 52);
     text-decoration: none;
     font-weight: 500;
 }
 
 .login-footer a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Design */
+
+
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .login-container {
+        min-height: auto;
+        height: 100vh;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        /* margin-top: 2rem; */
+        /* display: inline;
+        vertical-align: middle; */
+        /* display: block; */
+    }
+
+    .login-card {
+        padding: 1.5rem 1.5rem;
+        max-width: 100%;
+        width: 90%;
+    /* height: 50%; */
+    margin-top: 2rem;
+        /* margin: 0 auto; */
+    }
+
+    .login-title {
+        font-size: 1rem;
+    }
+
+    .password-input {
+        font-size: 0.9rem;
+    }
+
+    .password-toggle {
+        right: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .login-footer {
+        font-size: 0.875rem;
+    }
 }

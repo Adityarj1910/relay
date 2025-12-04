@@ -108,3 +108,41 @@
     color: #888;
     font-size: 0.875rem;
 }
+
+/* Responsive Design */
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .register-container {
+        min-height: auto;
+        height: 100vh;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        display: block;
+    }
+
+    .register-card {
+        padding: 1.5rem 1.5rem;
+        max-width: 100%;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .register-title {
+        font-size: 1rem;
+    }
+
+    .register-password-input {
+        font-size: 0.9rem;
+    }
+
+    .register-password-toggle {
+        right: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .register-footer {
+        font-size: 0.875rem;
+    }
+}

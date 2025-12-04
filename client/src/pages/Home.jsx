@@ -19,17 +19,6 @@ function Home() {
     return (
         <div className="background">
             <div className="home-container">
-                {/* <GridBackground /> */}
-                {/* <div className="flex items-center justify-center min-h-screen w-full bg-[#060010]">
-                <GlitchText
-                    speed={1}
-                    enableShadows={true}
-                    enableOnHover={false}
-                    className="text-center"
-                >
-                    Relay
-                </GlitchText>
-            </div> */}
 
                 <h1 style={{ fontSize: "6rem", marginBottom: "0.5rem" }}>Relay</h1> <br />
                 <motion.h1
@@ -44,7 +33,7 @@ function Home() {
                     )}
                     layout
                 >
-                    <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center", fontSize: "2.25rem" }}>
+                    <div className="home-manage-your" style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center", fontSize: "2.25rem" }}>
                         <span>Manage your</span>
                         <ContainerTextFlip words={words} />
                     </div>

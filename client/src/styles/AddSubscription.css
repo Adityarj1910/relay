@@ -47,7 +47,7 @@
     font-weight: 500;
     color: white;
     padding: 0px
-    /* width: 100%; */
+        /* width: 100%; */
 }
 
 .form-required {
@@ -85,6 +85,28 @@
     justify-content: space-between;
 }
 
-.form-actions button{
-    width:50%
-}    
+.form-actions button {
+    width: 50%
+}
+
+/* Responsive Design */
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .add-subscription-card {
+        padding: 1.5rem 1.5rem;
+        max-width: 95%;
+    }
+
+    .add-subscription-title {
+        font-size: 2.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

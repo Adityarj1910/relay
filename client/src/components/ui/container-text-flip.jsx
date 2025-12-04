@@ -47,7 +47,7 @@ export function ContainerTextFlip({
                 paddingLeft: "1rem",
                 paddingRight: "1rem",
                 textAlign: "center",
-                fontSize: "2.25rem",
+                fontSize: "clamp(1.25rem, 4vw, 2.25rem)",
                 fontWeight: "bold",
                 color: "#fff",
                 background: "linear-gradient(to bottom, #374151, #1f2937)",
@@ -88,3 +88,5 @@ export function ContainerTextFlip({
         </motion.div>
     );
 }
+
+export default ContainerTextFlip;
