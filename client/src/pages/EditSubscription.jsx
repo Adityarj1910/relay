@@ -127,11 +127,11 @@ function EditSubscription() {
 
                     <Input
                         type="date"
-                        name="nextBillingDate"
-                        value={formData.nextBillingDate}
+                        name="startDate"
+                        value={formData.startDate}
                         onChange={handleChange}
-                        label="Next Billing Date"
-                        placeholder={originalData.nextBillingDate || "Select date"}
+                        label="Start Date"
+                        placeholder={originalData.startDate || "Select date"}
                         required
                     />
 
