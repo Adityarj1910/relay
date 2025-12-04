@@ -68,7 +68,7 @@ function EditSubscription() {
         setError("");
 
         try {
-            await api.put(`/subscriptions/update${id}`, formData);
+            await api.put(`/subscriptions/update/${id}`, formData);
             navigate("/dashboard");
         } catch (err) {
             setError(err.message);
