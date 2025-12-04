@@ -12,7 +12,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-    origin: ["https://relay-ivory.vercel.app/"],
+    origin: ["https://relay-ivory.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
