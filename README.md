@@ -113,27 +113,6 @@ Relay will be built in multiple phases to avoid overwhelming complexity and ensu
 
 ---
 
-# 📂 **Folder Structure (Will Expand as Project Grows)**
-
-```
-relay/
-│
-├── client/          # React Frontend (Phase 1)
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-└── server/          # Node.js Backend
-    ├── routes/
-    ├── controllers/
-    ├── models/
-    ├── middleware/
-    ├── config/
-    └── package.json
-```
-
----
-
 # 📜 **License**
 
 This project is open-source and available under the MIT License.
