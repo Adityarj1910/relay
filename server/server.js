@@ -13,7 +13,7 @@ const app = express();
 // Middlewares
 app.use(cors({
     origin: [
-        "https://relay-ivory.vercel.app",  // Production frontend
+        "https://relay-two-ecru.vercel.app",  // Production frontend
         "http://localhost:5173",            // Local development
         "http://localhost:5174",            // Backup port
     ],
