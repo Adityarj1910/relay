@@ -30,8 +30,8 @@ We often share subscriptions with roommates and friends, forget renewal dates, l
 **Frontend:** React.js
 **Backend:** Node.js + Express.js
 **Database:** MongoDB
-**Authentication:** JWT
-**Tools:** Axios, Bcrypt, Mongoose, etc.
+  **Authentication:** JWT
+  **Tools:** Axios, Bcrypt, Mongoose, etc.
 
 ---
 
