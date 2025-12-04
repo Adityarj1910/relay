@@ -11,12 +11,19 @@ const app = express();
 
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: ["https://relay-ivory.vercel.app/"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser()); // Parse cookies
 
 // DB
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URIB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log("DB Error:", err));
 
