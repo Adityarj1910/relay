@@ -189,34 +189,40 @@
 }
 
 .subscription-meta {
-    display: flex;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 200px 160px 150px 1fr;
+    gap: 2rem;
     font-size: 0.875rem;
-    flex-wrap: nowrap;
     align-items: center;
 }
 
 .subscription-meta>span {
-    display: inline-flex;
+    display: flex;
     align-items: center;
 }
 
 .subscription-meta>span:nth-child(1) {
-    min-width: 130px;
+    /* Price + Billing Cycle */
 }
 
 .subscription-status {
     display: flex;
     align-items: center;
-    min-width: 120px;
 }
 
 .subscription-category {
-    min-width: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.subscription-next-billing {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-self: start;
 }
 
 .subscription-meta>span:last-child {
-    flex-shrink: 0;
     white-space: nowrap;
 }
 
@@ -354,7 +360,7 @@
 @media (max-width: 768px) {
     .dashboard-container {
         width: 95vw;
-        padding: 1rem;
+        padding: 10rem 1.5rem;
     }
 
     .dashboard-header {
@@ -385,38 +391,71 @@
     }
 
     .subscription-card {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: flex-start;
-        padding: 1rem;
-        gap: 1rem;
+        padding: 0.8rem;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .subscription-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .subscription-card h3 {
+        font-size: 1.15rem;
+        /* margin-bottom: 0.75rem; */
     }
 
     .subscription-meta {
+        display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.5rem 1rem;
         font-size: 0.75rem;
+        align-items: center;
     }
 
+    /* Row 1: Price + Billing Cycle and Active Toggle */
     .subscription-meta>span:nth-child(1) {
-        min-width: auto;
-        width: 100%;
+        /* Price and billing cycle */
+        flex: 0 0 auto;
     }
 
     .subscription-status {
-        min-width: auto;
+        /* Active toggle - stays on row 1 */
+        flex: 0 0 auto;
     }
 
+    /* Force row break after toggle */
+    .subscription-status::after {
+        content: "";
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    /* Row 2: Category and Next Billing */
     .subscription-category {
-        min-width: auto;
+        flex: 0 0 auto;
     }
 
-    .subscription-meta>span:last-child {
-        width: 100%;
+    .subscription-next-billing {
+        flex: 0 0 auto;
+        gap: 0.5rem;
     }
 
+    /* Move action buttons to top-right */
     .subscription-actions {
-        width: 100%;
-        justify-content: flex-end;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: auto;
+    }
+
+    .action-buttons {
+        gap: 0.5rem;
+        flex-direction: row;
     }
 
     .action-icon {

@@ -116,7 +116,7 @@ function Register() {
                         value={formData.name}
                         onChange={handleChange}
                         label="Name"
-                        placeholder="Enter your full name"
+                        placeholder="Jhon Doe"
                         error={errors.name}
                         required
                     />
@@ -127,7 +127,7 @@ function Register() {
                         value={formData.username}
                         onChange={handleChange}
                         label="Username"
-                        placeholder="Choose a username"
+                        placeholder="john_doe"
                         error={errors.username}
                         required
                     />
@@ -149,9 +149,10 @@ function Register() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        label={<>Email <span className="register-optional">(Optional)</span></>}
-                        placeholder="your.email@example.com"
+                        label="Email"
+                        placeholder="jhondoe@example.com"
                         error={errors.email}
+                        required
                     />
 
                     <div className="register-password-field">
@@ -212,7 +213,7 @@ function Register() {
 
                     <div className="register-footer">
                         Already have an account?{" "}
-                        <Link to="/login">Login here</Link>
+                        <Link to="/login"><b> Login</b></Link>
                     </div>
                 </form>
             </div>
