@@ -201,9 +201,6 @@
     align-items: center;
 }
 
-.subscription-meta>span:nth-child(1) {
-    /* Price + Billing Cycle */
-}
 
 .subscription-status {
     display: flex;
