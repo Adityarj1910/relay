@@ -13,7 +13,7 @@ const app = express();
 // Middlewares
 app.use(cors({
     origin: [
-        "https://relay-two-ecru.vercel.app",  // Production frontend
+        "https://relay-manage.vercel.app",  // Production frontend
         "http://localhost:5173",            // Local development
         "http://localhost:5174",            // Backup port
     ],
@@ -24,10 +24,7 @@ app.use(express.json());
 app.use(cookieParser()); // Parse cookies
 
 // DB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log("DB Error:", err));
 

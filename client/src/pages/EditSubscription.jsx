@@ -13,7 +13,7 @@ function EditSubscription() {
         name: "",
         price: "",
         billingCycle: "monthly",
-        nextBillingDate: "",
+        startDate: "",
         category: "",
         description: "",
     });
@@ -28,8 +28,8 @@ function EditSubscription() {
                 const response = await api.get(`/subscriptions/getSubscriptionById/${id}`);
                 const data = response.data;
                 const subscription = data.data;
-                const formattedDate = subscription.nextBillingDate
-                    ? new Date(subscription.nextBillingDate).toISOString().split("T")[0]
+                const formattedDate = subscription.startDate
+                    ? new Date(subscription.startDate).toISOString().split("T")[0]
                     : "";
 
                 // Store original data for placeholders
@@ -37,7 +37,7 @@ function EditSubscription() {
                     name: subscription.serviceName || "",
                     price: subscription.amount || "",
                     billingCycle: subscription.billingCycle || "monthly",
-                    nextBillingDate: formattedDate,
+                    startDate: formattedDate,
                     category: subscription.category || "",
                     description: subscription.notes || "",
                 };
@@ -68,7 +68,7 @@ function EditSubscription() {
         setError("");
 
         try {
-            await api.put(`/subscriptions/update${id}`, formData);
+            await api.put(`/subscriptions/update/${id}`, formData);
             navigate("/dashboard");
         } catch (err) {
             setError(err.message);
@@ -127,11 +127,11 @@ function EditSubscription() {
 
                     <Input
                         type="date"
-                        name="nextBillingDate"
-                        value={formData.nextBillingDate}
+                        name="startDate"
+                        value={formData.startDate}
                         onChange={handleChange}
-                        label="Next Billing Date"
-                        placeholder={originalData.nextBillingDate || "Select date"}
+                        label="Start Date"
+                        placeholder={originalData.startDate || "Select date"}
                         required
                     />
 
