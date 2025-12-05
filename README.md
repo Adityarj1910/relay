@@ -30,8 +30,8 @@ We often share subscriptions with roommates and friends, forget renewal dates, l
 **Frontend:** React.js
 **Backend:** Node.js + Express.js
 **Database:** MongoDB
-**Authentication:** JWT
-**Tools:** Axios, Bcrypt, Mongoose, etc.
+  **Authentication:** JWT
+  **Tools:** Axios, Bcrypt, Mongoose, etc.
 
 ---
 
@@ -110,27 +110,6 @@ Relay will be built in multiple phases to avoid overwhelming complexity and ensu
 * UI/UX improvements
 * Deployment (Render/Netlify/Vercel)
 * Documentation & final optimization
-
----
-
-# 📂 **Folder Structure (Will Expand as Project Grows)**
-
-```
-relay/
-│
-├── client/          # React Frontend (Phase 1)
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-└── server/          # Node.js Backend
-    ├── routes/
-    ├── controllers/
-    ├── models/
-    ├── middleware/
-    ├── config/
-    └── package.json
-```
 
 ---
 
