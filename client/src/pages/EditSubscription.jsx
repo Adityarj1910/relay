@@ -10,8 +10,8 @@ function EditSubscription() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        name: "",
-        price: "",
+        serviceName: "",
+        amount: "",
         billingCycle: "monthly",
         startDate: "",
         category: "",
@@ -34,8 +34,8 @@ function EditSubscription() {
 
                 // Store original data for placeholders
                 const original = {
-                    name: subscription.serviceName || "",
-                    price: subscription.amount || "",
+                    serviceName: subscription.serviceName || "",
+                    amount: subscription.amount || "",
                     billingCycle: subscription.billingCycle || "monthly",
                     startDate: formattedDate,
                     category: subscription.category || "",
@@ -91,21 +91,21 @@ function EditSubscription() {
                 <form onSubmit={handleSubmit} className="edit-subscription-form">
                     <Input
                         type="text"
-                        name="name"
-                        value={formData.name}
+                        name="serviceName"
+                        value={formData.serviceName}
                         onChange={handleChange}
                         label="Service Name"
-                        placeholder={originalData.name || "Enter service name"}
+                        placeholder={originalData.serviceName || "Enter service name"}
                         required
                     />
 
                     <Input
                         type="number"
-                        name="price"
-                        value={formData.price}
+                        name="amount"
+                        value={formData.amount}
                         onChange={handleChange}
-                        label="Price"
-                        placeholder={originalData.price || "Enter price"}
+                        label="Amount"
+                        placeholder={originalData.amount || "Enter amount"}
                         required
                     />
 
@@ -119,9 +119,10 @@ function EditSubscription() {
                             onChange={handleChange}
                             className="edit-form-select"
                         >
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
                             <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="yearly">Yearly</option>
                         </select>
                     </div>
 
@@ -135,14 +136,24 @@ function EditSubscription() {
                         required
                     />
 
-                    <Input
-                        type="text"
-                        name="category"
-                        value={formData.category}
-                        onChange={handleChange}
-                        label="Category"
-                        placeholder={originalData.category || "Enter category"}
-                    />
+                    <div className="edit-form-field">
+                        <label className="edit-form-label">
+                            Category <span className="edit-form-required">*</span>
+                        </label>
+                        <select
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                            className="edit-form-select"
+                        >
+                            <option value="entertainment">Entertainment</option>
+                            <option value="education">Education</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="software">Software</option>
+                            <option value="health">Health</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
                     <div className="edit-form-field">
                         <label className="edit-form-label">Description</label>

@@ -72,7 +72,11 @@ function Dashboard() {
     };
 
     const handleToggleActive = async (id, currentStatus) => {
-        // Optimistic UI update
+        if (!window.confirm("Are you sure you want to update the status?")) {
+            return;
+        }
+
+        // Optimistic UI update - this will trigger recalculation of monthlySpending
         setSubscriptions(subscriptions.map(sub =>
             sub._id === id ? { ...sub, isActive: !currentStatus } : sub
         ));
@@ -94,13 +98,24 @@ function Dashboard() {
     const totalSubscriptions = subscriptions.length;
 
     const monthlySpending = subscriptions.reduce((total, sub) => {
+        // Only count active subscriptions
+        if (!sub.isActive) {
+            return total;
+        }
+
         const price = parseFloat(sub.amount) || 0;
         let monthlyAmount = price;
+
+        // Convert to monthly equivalent
         if (sub.billingCycle === "yearly") {
             monthlyAmount = price / 12;
         } else if (sub.billingCycle === "weekly") {
             monthlyAmount = price * 4;
+        } else if (sub.billingCycle === "quarterly") {
+            monthlyAmount = price / 3;
         }
+        // "monthly" stays as-is
+
         return total + monthlyAmount;
     }, 0);
 
