@@ -95,8 +95,7 @@
 }
 
 .register-footer a {
-    color: rgb(241, 52, 52);
-    text-decoration: none;
+    color: #e4e1e1;
     font-weight: 500;
 }
 
@@ -104,10 +103,10 @@
     text-decoration: underline;
 }
 
-.register-optional {
+/* .register-optional {
     color: #888;
     font-size: 0.875rem;
-}
+} */
 
 /* Responsive Design */
 

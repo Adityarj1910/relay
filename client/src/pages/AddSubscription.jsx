@@ -12,8 +12,8 @@ function AddSubscription() {
 
         serviceName: "",
         amount: "",
-        billingCycle: "monthly",
-        nextBillingDate: "",
+        billingCycle: "",
+        startDate: "",
         category: "",
         description: "",
         isActive: true,
@@ -131,7 +131,7 @@ function AddSubscription() {
                             name="description"
                             value={formData.description}
                             onChange={handleChange}
-                            rows="3"
+                            rows="2"
                             className="form-textarea"
                         />
                     </div>

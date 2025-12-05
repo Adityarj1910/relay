@@ -224,7 +224,7 @@ function Dashboard() {
                                             <span className="subscription-category">
                                                 {sub.category.toUpperCase()}
                                             </span>
-                                            <span>
+                                            <span className="subscription-next-billing">
                                                 📅 Next: {nextBillingDDMMYY}
                                                 {isUpcoming && (
                                                     <span className="subscription-upcoming-badge">

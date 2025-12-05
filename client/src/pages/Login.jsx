@@ -159,7 +159,7 @@ function Login() {
 
                     <div className="login-footer">
                         Don't have an account?{" "}
-                        <Link to="/register">Register here</Link>
+                        <Link to="/register"><b> Register</b></Link>
                     </div>
                 </form>
             </div>
