@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AddSubscription from "./pages/AddSubscription";
-import EditSubscription from "./pages/EditSubscription"
+import EditSubscription from "./pages/EditSubscription";
 
 function App() {
   return (

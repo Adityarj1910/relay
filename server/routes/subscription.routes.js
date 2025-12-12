@@ -6,7 +6,8 @@ import {
     getSubscriptionById,
     getSubscriptionByNextBillingDate,
     updateSubscription,
-    deleteSubscription
+    deleteSubscription,
+    shareSubscription
 } from "../controllers/subscriptionController.js";
 import { verifyJWT } from "../middleware/auth.js";
 
@@ -19,5 +20,6 @@ subscriptionRouter.route("/getSubscriptionById/:id").get(verifyJWT, getSubscript
 subscriptionRouter.route("/getSubscriptionByNextBillingDate").get(verifyJWT, getSubscriptionByNextBillingDate)
 subscriptionRouter.route("/update/:id").put(verifyJWT, updateSubscription)
 subscriptionRouter.route("/delete/:id").delete(verifyJWT, deleteSubscription)
+subscriptionRouter.route("/:id/share").post(verifyJWT, shareSubscription)
 
 export default subscriptionRouter;

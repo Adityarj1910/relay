@@ -489,7 +489,7 @@ Document required environment variables:
 
 Phase 1 is complete when:
 
-1. ✅ A user can register with phone number, username, and password
+¸1. ✅ A user can register with phone number, username, and password
 2. ✅ A user can login and receive a JWT token
 3. ✅ Token persists across page refreshes
 4. ✅ Authenticated users can create subscriptions

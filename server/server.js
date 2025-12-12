@@ -35,8 +35,11 @@ app.get("/", (req, res) => {
 // ROUTES
 import userRouter from "./routes/user.routes.js";
 import subscriptionRouter from "./routes/subscription.routes.js";
-app.use("/api/v1/users", userRouter); // Fixed: added leading slash
+import invitationRouter from "./routes/invitation.routes.js";
+app.use("/api/v1/users", userRouter);
 app.use("/api/v1/subscriptions", subscriptionRouter);
+app.use("/api/v1/invitations", invitationRouter);
+
 
 
 
