@@ -3,7 +3,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import SubscriptionInvitation from '../models/SubscriptionInvitation.js';
 import Subscription from '../models/Subscription.js';
-import SettleUp from '../models/SettleUp.js';
+// import SettleUp from '../models/SettleUp.js'; // TODO: Phase 3 - Settle Up feature
 import { User } from '../models/User.js';
 
 // Get all invitations for authenticated user
@@ -97,16 +97,16 @@ const acceptInvitation = asyncHandler(async (req, res) => {
     }
     await invitation.save();
 
-    // Create SettleUp record for tracking
-    await SettleUp.create({
-        userId: userId,
-        subscriptionId: subscription._id,
-        amount: invitation.shareAmount,
-        isPaid: false,
-        dueDate: subscription.nextBillingDate,
-        hostUserId: subscription.hostUserId || subscription.userId,
-        billingCycle: subscription.billingCycle
-    });
+    // TODO: Phase 3 - Create SettleUp record for payment tracking
+    // await SettleUp.create({
+    //     userId: userId,
+    //     subscriptionId: subscription._id,
+    //     amount: invitation.shareAmount,
+    //     isPaid: false,
+    //     dueDate: subscription.nextBillingDate,
+    //     hostUserId: subscription.hostUserId || subscription.userId,
+    //     billingCycle: subscription.billingCycle
+    // });
 
     return res.status(200).json(
         new ApiResponse(200, {
