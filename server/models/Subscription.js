@@ -37,7 +37,7 @@ const subscriptionSchema = new Schema(
         },
 
         notes: { type: String },
-        
+
         // auto-calculated — NOT provided by user
         nextBillingDate: {
             type: Date,
@@ -63,6 +63,33 @@ const subscriptionSchema = new Schema(
             enum: ['Credit Card', 'Debit Card', 'UPI', 'Net Banking', 'Other'],
             default: 'Other'
         },
+
+        isShared: { type: Boolean, default: false },
+
+        hostUserId: { type: Schema.Types.ObjectId, ref: 'User' }, // Original creator
+
+        sharedWith: [{
+            userId: { type: Schema.Types.ObjectId, ref: 'User' },
+            role: { type: String, enum: ['host', 'member'], default: 'member' },
+            shareAmount: { type: Number }, // Individual's share
+            isPaid: { type: Boolean, default: false },
+            paidAt: { type: Date },
+            joinedAt: { type: Date, default: Date.now },
+            invitationStatus: {
+                type: String,
+                enum: ['pending', 'accepted', 'declined'],
+                default: 'pending'
+            }
+
+        }],
+
+        splitType: {
+            type: String,
+            enum: ['equal', 'custom', 'percentage'],
+            default: 'equal'
+        },
+
+        totalParticipants: { type: Number, default: 1 }
     },
     { timestamps: true }
 );
