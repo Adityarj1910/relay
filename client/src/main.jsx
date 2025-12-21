@@ -8,7 +8,7 @@ import Snowfall from 'react-snowfall'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <Snowfall color="82C3D9"/>
+      <Snowfall color='white'/>
       <App />
     </AuthProvider>
   </StrictMode>,
