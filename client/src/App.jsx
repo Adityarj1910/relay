@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
-
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -11,6 +10,7 @@ import EditSubscription from "./pages/EditSubscription";
 
 function App() {
   return (
+    // <Snowfall>
     <BrowserRouter>
       <Routes>
         {/* Public Routes */}
