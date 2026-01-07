@@ -11,13 +11,16 @@ const app = express();
 
 
 // Middlewares
+app.use(express.json());
 app.use(cors({
     origin: [
         "https://relay-manage.vercel.app",  // Production frontend
         "http://localhost:5173",            // Local development
         "http://localhost:5174",            // Backup port
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
 app.use(express.json());
